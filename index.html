@@ -1,0 +1,38 @@
+<!-- archivo.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <!-- Incluir la biblioteca jQuery (asegúrate de tener acceso a Internet para cargarla desde CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <!-- Contenido de la página principal -->
+    <h1>Página Principal</h1>
+    <div id="contenidoPHP"></div>
+
+    <!-- Script para cargar el contenido del archivo PHP -->
+    <script>
+        // Utilizar jQuery para cargar el contenido del archivo PHP de forma asíncrona
+        $(document).ready(function() {
+            $.ajax({
+                url: 'conexion.php', // Ruta al archivo PHP
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    // Insertar el contenido en el elemento con el id "contenidoPHP"
+                    $('#contenidoPHP').html(data);
+                },
+                error: function() {
+                    // Manejar errores si la carga del archivo PHP falla
+                    console.error('Error al cargar el contenido del archivo PHP.');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
